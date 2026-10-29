@@ -24,7 +24,7 @@ import time
 #     time.sleep for delay in text; defaults to seconds
 #     ^^ imports
 #     ****************************************************
-Welcome = "Welcome to a 99NITF simulation..."
+Welcome = "Welcome to a 99NITF fan-game..."
 #     ^^ Intro
 #     ****************************************************
 def dot ():
@@ -45,6 +45,7 @@ endings = [ending0, ending1, ending2]
 day_counter = 0
 
 def day(ending = " ", count = "no"):
+    global day_counter
     day_counter = 1
     global safe, ended, ending0, ending1, ending2, endings
     if ending == " ":
@@ -110,7 +111,9 @@ def sit2():
     time.sleep(1)
     print("Night passes by and strange noises fill the forest...")
     time.sleep(3)
-    print("morning shines through the forest trees")
+    print("Morning shines through the forest trees and fog hangs low to the ground")
+    time.sleep(1)
+    print("Strangley, it feels tranquil. Quiet.")
 #     ^^ Situations
 #     ****************************************************
 # Resources ^
@@ -132,17 +135,21 @@ if choice1 == "yes":
     print(Pelt_Trades)
     choice2 = input("Choose an item: ")
     time.sleep(0.3)
-    if choice2 == "revolver ammo":
+    match choice2:
+        case "revolver ammo":
             print("Received revolver ammo")
             inventory["ammo"] = "revolver ammo"
-    elif choice2 == "good axe":
+        case "good axe":
             print("Received good axe")
             inventory["axe"] = "good axe"
-    elif choice2 == "good sack":
+        case "good sack":
             print("Received good sack")
             inventory["sack"] = "good sack"
-else: 
-    inventory["item1"] = "bunny foot"
+        case _:
+            print("Hmmm... seems as though Pelt Trader doesn't accept that trade.")
+            inventory["item1"] = "bunny foot"
+
+    
 #     ^^ Game event 1: Pelt Trading
 #     ****************************************************
 dot()
